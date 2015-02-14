@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campus_id: 
+  nome: MyString
+  vigencia: 2015-02-14 16:23:22
+
+two:
+  campus_id: 
+  nome: MyString
+  vigencia: 2015-02-14 16:23:22

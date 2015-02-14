@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calendario_id: 
+  evento_tipo_id: 
+  inicio: 2015-02-14
+  fim: 2015-02-14
+  dia_semana: 1
+  descricao: MyText
+
+two:
+  calendario_id: 
+  evento_tipo_id: 
+  inicio: 2015-02-14
+  fim: 2015-02-14
+  dia_semana: 1
+  descricao: MyText

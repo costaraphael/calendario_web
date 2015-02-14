@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Campi</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Sigla</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campi.each do |campus| %>
+      <tr>
+        <td><%= campus.nome %></td>
+        <td><%= campus.sigla %></td>
+        <td><%= link_to 'Show', campus %></td>
+        <td><%= link_to 'Edit', edit_campus_path(campus) %></td>
+        <td><%= link_to 'Destroy', campus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Campus', new_campus_path %>

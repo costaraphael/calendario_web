@@ -1,0 +1,40 @@
+@startuml
+
+class Campus {
+    nome: string
+    sigla: string
+}
+
+class Calendario {
+    nome: string
+    campus: Campus
+    vigencia: datetime
+}
+
+Calendario --> Campus
+
+class EventoTipo {
+    nome:string
+}
+
+class Evento {
+    calendario: Calendario
+    tipo: TipoEvento
+    inicio: date
+    fim: date
+    dia_semana: integer
+    descricao: string
+}
+
+Evento --> Calendario
+Evento --> EventoTipo
+
+class Usuario {
+    nome: string
+    email: string
+    campus: Campus
+}
+
+Usuario -> Campus
+
+@enduml

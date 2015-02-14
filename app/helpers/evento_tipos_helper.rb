@@ -1,0 +1,2 @@
+module EventoTiposHelper
+end

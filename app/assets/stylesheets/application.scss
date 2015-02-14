@@ -1,0 +1,11 @@
+/*
+ *= require bootstrap-datepicker3
+ */
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.main-container {
+  @extend .container;
+  margin-top: 50px;
+}

@@ -1,0 +1,2 @@
+module CampiHelper
+end
