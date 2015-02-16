@@ -1,10 +1,11 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
+  before_action :set_calendario, only: [:index, :new, :create]
 
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    @eventos = @calendario.eventos.all
   end
 
   # GET /eventos/1
@@ -24,7 +25,7 @@ class EventosController < ApplicationController
   # POST /eventos
   # POST /eventos.json
   def create
-    @evento = Evento.new(evento_params)
+    @evento = @calendario.eventos.build(evento_params)
 
     respond_to do |format|
       if @evento.save
@@ -62,10 +63,13 @@ class EventosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_evento
-      @evento = Evento.find(params[:id])
-    end
+  def set_evento
+    @evento = Evento.find(params[:id])
+  end
+
+  def set_calendario
+    @calendario = Calendario.find(params[:calendario_id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params

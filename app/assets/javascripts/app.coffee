@@ -1,8 +1,5 @@
-$(document).ready ->
-  $('.input-daterange').datepicker {
-    format: "dd/mm/yyyy"
-    language: "pt-BR"
-    autoclose: true
-  }
+calendario = angular.module('calendarioWeb', ['ngAnimate', 'ngResource'])
 
-#  $('[data-toggle="dropdown"]').dropdown()
+#= require eventos
+#= require calendarios
+#= require campi
