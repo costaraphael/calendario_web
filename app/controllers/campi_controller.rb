@@ -27,8 +27,7 @@ class CampiController < ApplicationController
 
     respond_to do |format|
       if @campus.save
-        format.html { redirect_to @campus, notice: 'Campus was successfully created.' }
-        format.json { render :show, status: :created, location: @campus }
+        format.html { redirect_to campi_path, notice: "Câmpus #{@campus.sigla} criado com sucesso." }
       else
         format.html { render :new }
         format.json { render json: @campus.errors, status: :unprocessable_entity }
@@ -41,8 +40,7 @@ class CampiController < ApplicationController
   def update
     respond_to do |format|
       if @campus.update(campus_params)
-        format.html { redirect_to @campus, notice: 'Campus was successfully updated.' }
-        format.json { render :show, status: :ok, location: @campus }
+        format.html { redirect_to campi_path, notice: "Câmpus #{@campus.sigla} atualizado com sucesso." }
       else
         format.html { render :edit }
         format.json { render json: @campus.errors, status: :unprocessable_entity }
@@ -55,7 +53,7 @@ class CampiController < ApplicationController
   def destroy
     @campus.destroy
     respond_to do |format|
-      format.html { redirect_to campi_url, notice: 'Campus was successfully destroyed.' }
+      format.html { redirect_to campi_url, notice: "Câmpus #{@campus.sigla} removido com sucesso." }
       format.json { head :no_content }
     end
   end
