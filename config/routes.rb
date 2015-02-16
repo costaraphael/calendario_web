@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :eventos
-
   resources :evento_tipos
 
-  resources :calendarios
+  resources :calendarios, shallow: true do
+    resources :eventos
+  end
 
   resources :campi
 

@@ -18,9 +18,9 @@
         <td><%= calendario.campus %></td>
         <td><%= calendario.nome %></td>
         <td><%= calendario.vigencia %></td>
-        <td><%= link_to 'Show', calendario %></td>
-        <td><%= link_to 'Edit', edit_calendario_path(calendario) %></td>
-        <td><%= link_to 'Destroy', calendario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eventos', calendario_eventos_path(calendario) %></td>
+        <td><%= link_to 'Editar', edit_calendario_path(calendario) %></td>
+        <td><%= link_to 'Remover', calendario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214202512) do
+ActiveRecord::Schema.define(version: 20150216205453) do
 
   create_table "calendarios", force: :cascade do |t|
     t.integer  "campus_id",  limit: 4
@@ -31,9 +31,12 @@ ActiveRecord::Schema.define(version: 20150214202512) do
   end
 
   create_table "evento_tipos", force: :cascade do |t|
-    t.string   "nome",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "nome",           limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "tem_dia_semana", limit: 1
+    t.boolean  "tem_descricao",  limit: 1
+    t.boolean  "tem_periodo",    limit: 1
   end
 
   create_table "eventos", force: :cascade do |t|
