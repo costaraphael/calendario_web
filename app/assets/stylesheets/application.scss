@@ -7,5 +7,26 @@
 
 .main-container {
   @extend .container;
-  margin-top: 50px;
+  margin-top: 60px;
+}
+
+.panel-heading {
+  h1{
+    margin-top: 10px;
+  }
+
+  .btn-lg {
+    margin-top: 5px;
+  }
+}
+
+.config{
+  @extend .text-center;
+  width: 1px;
+}
+
+.btn-back {
+  @extend .btn-link;
+  padding: 0 !important;
+  font-size: 1em;
 }

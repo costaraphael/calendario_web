@@ -9,8 +9,7 @@ class CampiController < ApplicationController
 
   # GET /campi/1
   # GET /campi/1.json
-  def show
-  end
+
 
   # GET /campi/new
   def new
