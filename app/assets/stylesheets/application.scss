@@ -30,3 +30,27 @@
   padding: 0 !important;
   font-size: 1em;
 }
+
+.form-group {
+  white-space: nowrap;
+
+  select.date {
+    @media (min-width: $screen-xs-min) {
+      width: 32.9%;
+    }
+    @media (min-width: $screen-sm-min) {
+      width: 32.9%;
+    }
+    @media (min-width: $screen-md-min) {
+      width: 33.1%;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: 33.1%;
+    }
+    display: inline;
+  }
+
+  label.date {
+    display: block;
+  }
+}

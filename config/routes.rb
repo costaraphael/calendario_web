@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :evento_tipos
+  resources :evento_tipos, only: :index
 
-  resources :calendarios, shallow: true do
+  resources :calendarios do
     resources :eventos
   end
 
   resources :campi
+
+  get 'api/campi.:format' => 'api#campi'
+  get 'api/calendario/:id_campus.:format' => 'api#calendario'
 
   devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.

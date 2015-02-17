@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @evento %> |
-<%= link_to 'Back', eventos_path %>
+<%= link_to 'Show', [@calendario, @evento] %> |
+<%= link_to 'Back', calendario_eventos_path(@calendario) %>

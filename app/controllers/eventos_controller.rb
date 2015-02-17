@@ -1,11 +1,11 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
-  before_action :set_calendario, only: [:index, :new, :create]
+  before_action :set_calendario
 
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = @calendario.eventos.all
+    @eventos = @calendario.eventos.all.order(:inicio).order(:fim)
   end
 
   # GET /eventos/1
@@ -26,6 +26,8 @@ class EventosController < ApplicationController
   # POST /eventos.json
   def create
     @evento = @calendario.eventos.build(evento_params)
+
+    @evento.fim = @evento.inicio if @evento.fim.nil?
 
     respond_to do |format|
       if @evento.save
@@ -73,6 +75,6 @@ class EventosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evento_params
-      params.require(:evento).permit(:calendario_id, :evento_tipo_id, :inicio, :fim, :dia_semana, :descricao)
+      params.require(:evento).permit(:evento_tipo_id, :inicio, :fim, :dia_semana, :descricao)
     end
 end

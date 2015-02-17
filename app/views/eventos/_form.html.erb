@@ -1,15 +1,20 @@
-<%= simple_form_for(@evento, url: @evento.new_record? ? calendario_eventos_path(@calendario) : nil, form_html: {class: 'form-horizontal'}) do |f| %>
-  <%= f.error_notification %>
+<div ng-controller="eventosFormController as ctrl">
+  <%= simple_form_for([@calendario, @evento], form_html: {class: 'form-horizontal'}) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :evento_tipo, input_html: {:'ng-model' => 'evento.evento_tipo'} %>
-    <%= f.input :inicio %>
-    <%= f.input :fim %>
-    <%= f.input :dia_semana %>
-    <%= f.input :descricao %>
-  </div>
-    <pre>{{evento|json}}</pre>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+      <div class="form-inputs">
+        <%= f.input :evento_tipo, as: :select, prompt: 'Selecione um tipo de evento.',
+                    input_html: {:'ng-model' => 'evento.tipo',
+                                 :'ng-options' => 'tipo.nome for tipo in ctrl.eventoTipos track by tipo.id'} %>
+        <%= f.input_field :evento_tipo_id, as: :hidden %>
+        <%= f.input :inicio, wrapper_html: {:'ng-if' => 'evento.tipo.id'} %>
+        <%= f.input :fim, wrapper_html: {:'ng-if' => 'evento.tipo.tem_periodo'} %>
+        <%= f.input :dia_semana, collection: Evento.dias_semana, prompt: 'Selecione um dia da semana.',
+                    wrapper_html: {:'ng-if' => 'evento.tipo.tem_dia_semana'} %>
+        <%= f.input :descricao, wrapper_html: {:'ng-if' => 'evento.tipo.tem_descricao'} %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+  <% end %>
+</div>

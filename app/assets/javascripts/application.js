@@ -19,3 +19,4 @@
 //= require angular-animate
 //= require angular-resource
 //= require app
+//= require_directory ./controllers

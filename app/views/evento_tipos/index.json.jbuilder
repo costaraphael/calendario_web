@@ -1,4 +1,3 @@
 json.array!(@evento_tipos) do |evento_tipo|
-  json.extract! evento_tipo, :id, :nome
-  json.url evento_tipo_url(evento_tipo, format: :json)
+  json.extract! evento_tipo, :id, :nome, :tem_dia_semana, :tem_periodo, :tem_descricao
 end

@@ -1,5 +1,8 @@
-calendario = angular.module('calendarioWeb', ['ngAnimate', 'ngResource'])
+angular.module('calendarioWeb', ['ngAnimate', 'ngResource'])
 
-#= require eventos
-#= require calendarios
-#= require campi
+ready = ->
+  $('[ng-app]').each ->
+    module = $(this).attr('ng-app')
+    angular.bootstrap(this, [module])
+
+$(document).on 'page:load', ready

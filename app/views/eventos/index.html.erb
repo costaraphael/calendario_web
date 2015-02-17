@@ -2,7 +2,7 @@
 
 <h1>Listing Eventos</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Calendario</th>
@@ -24,9 +24,9 @@
         <td><%= evento.fim %></td>
         <td><%= evento.dia_semana %></td>
         <td><%= evento.descricao %></td>
-        <td><%= link_to 'Show', evento %></td>
-        <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-        <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@calendario, evento] %></td>
+        <td><%= link_to 'Edit', edit_calendario_evento_path(@calendario, evento) %></td>
+        <td><%= link_to 'Destroy', [@calendario, evento], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
