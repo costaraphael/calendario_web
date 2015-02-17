@@ -1,5 +1,13 @@
-<h1>New Evento</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', calendario_eventos_path(@calendario) %>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h1 class="pull-left">
+      <%= link_to  calendario_eventos_path(@calendario), class: 'btn btn-back' do %>
+          <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
+      Novo evento
+    </h1>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>

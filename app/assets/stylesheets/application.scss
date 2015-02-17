@@ -49,8 +49,25 @@
     }
     display: inline;
   }
+  select.datetime {
+    @media (min-width: $screen-xs-min) {
+      width: 18.5%;
+    }
+    @media (min-width: $screen-sm-min) {
+      width: 18.8%;
+    }
+    @media (min-width: $screen-md-min) {
+      width: 19.1%;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: 19.2%;
+    }
+    display: inline;
+  }
 
-  label.date {
-    display: block;
+  label {
+    &.date, &.datetime {
+      display: block;
+    }
   }
 }

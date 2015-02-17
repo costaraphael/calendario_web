@@ -8,33 +8,39 @@
       <% end %>
     </div>
   </div>
-  <table class="table table-hover table-striped">
-    <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sigla</th>
-      <th class="config">
-        <i class="glyphicon glyphicon-cog"></i>
-      </th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @campi.each do |campus| %>
+  <% if @campi.any? %>
+      <table class="table table-hover table-striped">
+        <thead>
         <tr>
-          <td><%= campus.nome %></td>
-          <td><%= campus.sigla %></td>
-          <td class="text-nowrap">
-            <%= link_to edit_campus_path(campus), class: 'btn btn-xs btn-info' do %>
-                <i class="glyphicon glyphicon-edit"></i>
-            <% end %>
-
-            <%= link_to campus, method: :delete, data: {confirm: "Deseja realmente excluir o campus #{campus.sigla}?"}, class: 'btn btn-xs btn-danger' do %>
-                <i class="glyphicon glyphicon-trash"></i>
-            <% end %>
-          </td>
+          <th>Nome</th>
+          <th>Sigla</th>
+          <th class="config">
+            <i class="glyphicon glyphicon-cog"></i>
+          </th>
         </tr>
-    <% end %>
-    </tbody>
-  </table>
+        </thead>
+
+        <tbody>
+        <% @campi.each do |campus| %>
+            <tr>
+              <td><%= campus.nome %></td>
+              <td><%= campus.sigla %></td>
+              <td class="text-nowrap">
+                <%= link_to edit_campus_path(campus), class: 'btn btn-xs btn-info' do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                <% end %>
+
+                <%= link_to campus, method: :delete, data: {confirm: "Deseja realmente excluir o campus #{campus.sigla}?"}, class: 'btn btn-xs btn-danger' do %>
+                    <i class="glyphicon glyphicon-trash"></i>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <div class="alert alert-info">
+        Nenhum câmpus cadastrado.
+      </div>
+  <% end %>
 </div>

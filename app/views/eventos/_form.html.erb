@@ -14,7 +14,7 @@
         <%= f.input :descricao, wrapper_html: {:'ng-if' => 'evento.tipo.tem_descricao'} %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit %>
+        <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
       </div>
   <% end %>
 </div>
