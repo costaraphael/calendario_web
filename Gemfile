@@ -29,8 +29,6 @@ gem 'cancancan'
 
 gem 'simple_form'
 
-gem 'devise'
-
 gem 'bootstrap-datepicker-rails'
 
 gem 'angularjs-rails'
