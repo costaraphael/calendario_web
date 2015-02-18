@@ -1,31 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h1 class="pull-left">
+      <%= link_to calendario_eventos_path(@evento.calendario), class: 'btn btn-back' do %>
+          <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
+      Visualizar evento
+    </h1>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Calendario:</strong>
+      <%= @evento.calendario %>
+    </p>
 
-<p>
-  <strong>Calendario:</strong>
-  <%= @evento.calendario %>
-</p>
+    <p>
+      <strong>Evento tipo:</strong>
+      <%= @evento.evento_tipo %>
+    </p>
 
-<p>
-  <strong>Evento tipo:</strong>
-  <%= @evento.evento_tipo %>
-</p>
+    <p>
+      <strong>Inicio:</strong>
+      <%= @evento.inicio.strftime '%d/%m/%Y' %>
+    </p>
 
-<p>
-  <strong>Inicio:</strong>
-  <%= @evento.inicio %>
-</p>
-
-<p>
-  <strong>Fim:</strong>
-  <%= @evento.fim %>
-</p>
-
-<p>
-  <strong>Dia semana:</strong>
-  <%= @evento.dia_semana %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @evento.descricao %>
-</p>
+    <p>
+      <strong>Fim:</strong>
+      <%= @evento.fim.strftime '%d/%m/%Y' %>
+    </p>
+    <% if !@evento.dia_semana.blank? %>
+        <p>
+          <strong>Dia semana:</strong>
+          <%= @evento.dia_semana %>
+        </p>
+    <% end %>
+    <% if !@evento.descricao.blank? %>
+        <p>
+          <strong>Descricao:</strong>
+          <%= @evento.descricao %>
+        </p>
+    <% end %>
+  </div>
+</div>'
