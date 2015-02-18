@@ -9,8 +9,7 @@ class CalendariosController < ApplicationController
 
   # GET /calendarios/1
   # GET /calendarios/1.json
-  def show
-  end
+
 
   # GET /calendarios/new
   def new
@@ -28,8 +27,8 @@ class CalendariosController < ApplicationController
 
     respond_to do |format|
       if @calendario.save
-        format.html { redirect_to @calendario, notice: 'Calendario was successfully created.' }
-        format.json { render :show, status: :created, location: @calendario }
+        format.html { redirect_to calendarios_path, notice: "Calendário #{@calendario.nome} cadastrado com sucesso." }
+        format.json { render :index, status: :created, location: @calendario }
       else
         format.html { render :new }
         format.json { render json: @calendario.errors, status: :unprocessable_entity }
@@ -42,8 +41,8 @@ class CalendariosController < ApplicationController
   def update
     respond_to do |format|
       if @calendario.update(calendario_params)
-        format.html { redirect_to @calendario, notice: 'Calendario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @calendario }
+        format.html { redirect_to calendarios_path, notice: "Calendário #{@calendario.nome} atualizado com sucesso" }
+        format.json { render :index, status: :ok, location: @calendario }
       else
         format.html { render :edit }
         format.json { render json: @calendario.errors, status: :unprocessable_entity }
@@ -56,7 +55,7 @@ class CalendariosController < ApplicationController
   def destroy
     @calendario.destroy
     respond_to do |format|
-      format.html { redirect_to calendarios_url, notice: 'Calendario was successfully destroyed.' }
+      format.html { redirect_to calendarios_url, notice: "Calendário #{@calendario.nome} removido com sucesso." }
       format.json { head :no_content }
     end
   end
