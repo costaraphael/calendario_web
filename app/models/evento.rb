@@ -2,6 +2,8 @@ class Evento < ActiveRecord::Base
   belongs_to :calendario
   belongs_to :evento_tipo
 
+  validates_presence_of :evento_tipo, :calendario, :inicio, :fim
+
   def self.dias_semana
     [
         ['Domingo', 0],

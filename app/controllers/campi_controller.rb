@@ -51,10 +51,17 @@ class CampiController < ApplicationController
   # DELETE /campi/1
   # DELETE /campi/1.json
   def destroy
-    @campus.destroy
-    respond_to do |format|
-      format.html { redirect_to campi_url, notice: "Câmpus #{@campus.sigla} removido com sucesso." }
-      format.json { head :no_content }
+    begin
+      @campus.destroy
+      respond_to do |format|
+        format.html { redirect_to campi_url, notice: "Câmpus #{@campus.sigla} removido com sucesso." }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::DeleteRestrictionError
+      respond_to do |format|
+        format.html { redirect_to campi_url, notice: "Câmpus #{@campus.sigla} não pôde ser removido pois existem calendários registrados para ele." }
+        format.json { head :no_content }
+      end
     end
   end
 

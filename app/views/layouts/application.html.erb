@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CalendarioWeb</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario Web</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,9 +19,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Calendário
-        <small>web</small>
-      </a>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+          Calendário<sup><small>WEB</small></sup>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

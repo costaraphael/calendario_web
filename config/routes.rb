@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   resources :evento_tipos, only: :index
 
   resources :calendarios do
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
   get 'api/campi.:format' => 'api#campi'
   get 'api/calendario/:id_campus.:format' => 'api#calendario'
 
-  devise_for :usuarios
+  devise_for :usuarios, controllers: {
+                          registration: 'registration'
+                      }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
