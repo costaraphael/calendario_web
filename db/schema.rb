@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216205453) do
+ActiveRecord::Schema.define(version: 20150218232446) do
 
   create_table "calendarios", force: :cascade do |t|
     t.integer  "campus_id",  limit: 4
@@ -53,7 +53,21 @@ ActiveRecord::Schema.define(version: 20150216205453) do
   add_index "eventos", ["calendario_id"], name: "index_eventos_on_calendario_id", using: :btree
   add_index "eventos", ["evento_tipo_id"], name: "index_eventos_on_evento_tipo_id", using: :btree
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.string   "login",      limit: 255
+    t.string   "senha",      limit: 255
+    t.string   "salt",       limit: 255
+    t.boolean  "ativo",      limit: 1
+    t.integer  "campus_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "usuarios", ["campus_id"], name: "index_usuarios_on_campus_id", using: :btree
+
   add_foreign_key "calendarios", "campi"
   add_foreign_key "eventos", "calendarios"
   add_foreign_key "eventos", "evento_tipos"
+  add_foreign_key "usuarios", "campi"
 end

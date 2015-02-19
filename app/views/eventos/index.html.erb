@@ -4,7 +4,7 @@
       <%= link_to calendarios_path, class: 'btn btn-back' do %>
           <i class="glyphicon glyphicon-chevron-left"></i>
       <% end %>
-      Listagem de eventos
+      Eventos do calendário <%= @calendario %>
     </h1>
 
     <div class="pull-right">
@@ -14,15 +14,12 @@
     </div>
   </div>
   <% if @eventos.any? %>
-      <table class="table">
+      <table class="table table-hover table-striped">
         <thead>
         <tr>
-          <th>Calendario</th>
           <th>Evento tipo</th>
           <th>Inicio</th>
           <th>Fim</th>
-          <th>Dia semana</th>
-          <th>Descricao</th>
           <th class="config">
             <i class="glyphicon glyphicon-cog"></i>
           </th>
@@ -32,12 +29,9 @@
         <tbody>
         <% @eventos.each do |evento| %>
             <tr>
-              <td><%= evento.calendario %></td>
               <td><%= evento.evento_tipo %></td>
-              <td><%= evento.inicio %></td>
-              <td><%= evento.fim %></td>
-              <td><%= evento.dia_semana %></td>
-              <td><%= evento.descricao %></td>
+              <td><%= evento.inicio.strftime '%d/%m/%Y' %></td>
+              <td><%= evento.fim.strftime '%d/%m/%Y' %></td>
               <td class="text-nowrap">
                 <%= link_to calendario_evento_path(@calendario, evento), class: 'btn btn-xs btn-success', data: {toggle: 'tooltip', placement: 'top'}, title: 'Visualizar' do %>
                     <i class="glyphicon glyphicon-list"></i>

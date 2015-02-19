@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario Web</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+          Calendário<sup>
+      <small>WEB</small>
+    </sup>
+      <% end %>
+    </div>
+  </div>
+</nav>
+<div class="col col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 col" style="margin-top: 10%">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login</h3>
+    </div>
+    <% if notice %>
+        <div class="alert alert-warning">
+          <p><%= notice %></p>
+        </div>
+    <% end %>
+    <div class="panel-body">
+      <%= simple_form_for :login do |f| %>
+          <%= f.input :login, class: 'form-control', placeholder: 'Login' %>
+
+          <%= f.input :senha, as: :password, class: 'form-control', placeholder: 'Senha' %>
+          <%= f.submit 'Entrar', class: 'btn btn-default btn-block' do %>
+              <i class="glyphicon glyphicon-log-in"></i>
+              Entrar
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>

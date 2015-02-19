@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h1 class="pull-left">
+      <%= link_to root_path, class: 'btn btn-back' do %>
+          <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
+      Alterar dados pessoais
+    </h1>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for(@usuario, url: dados_pessoais_path, method: :post) do |f| %>
+        <%= f.input :nome %>
+        <%= f.input :senha, as: :password %>
+        <%= f.input :senha_confirmation, as: :password, label: 'Confirmação de senha' %>
+
+        <%= f.button :submit, 'Salvar', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

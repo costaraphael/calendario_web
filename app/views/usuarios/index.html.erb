@@ -1,0 +1,55 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h1 class="pull-left">
+      <%= link_to calendarios_path, class: 'btn btn-back' do %>
+          <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
+      Listagem de usuários
+    </h1>
+
+    <div class="pull-right">
+      <%= link_to new_usuario_path, class: 'btn btn-link btn-lg' do %>
+          <i class="glyphicon glyphicon-plus"></i>
+      <% end %>
+    </div>
+  </div>
+  <% if @usuarios.any? %>
+      <table class="table table-hover table-striped">
+        <tr>
+          <th>Nome</th>
+          <th>Login</th>
+          <th>Campus</th>
+          <th class="config">Ativo</th>
+          <th class="config">
+            <i class="glyphicon glyphicon-cog"></i>
+          </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @usuarios.each do |usuario| %>
+            <tr>
+              <td><%= usuario.nome %></td>
+              <td><%= usuario.login %></td>
+              <td><%= usuario.campus %></td>
+              <td>
+                <% if usuario.ativo? %>
+                    <i class="glyphicon glyphicon-unchecked"></i>
+                <% else %>
+                    <i class="glyphicon glyphicon-check"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to edit_usuario_path(usuario), class: 'btn btn-primary btn-xs' do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                <% end %>
+                <%= link_to usuario, method: :delete, data: {confirm: "Deseja realmente remover o usuário #{usuario.nome}?"}, class: 'btn btn-danger btn-xs' do %>
+                    <i class="glyphicon glyphicon-trash"></i>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
