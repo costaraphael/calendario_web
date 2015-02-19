@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: calendario_web_production
-  username: calendario_web
-  password: <%= ENV['CALENDARIO_WEB_DATABASE_PASSWORD'] %>
