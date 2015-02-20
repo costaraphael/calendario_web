@@ -5,8 +5,8 @@ class Ability
     if user.admin
       can :manage, :all
     else
-      can :all, Calendario, campus_id: user.campus.id
-      can :all, Evento, calendario: {campus_id: user.campus.id}
+      can :manage, Calendario, campus_id: user.campus.id
+      # can :manage, Evento, calendario: {campus_id: user.campus.id}
       can :read, Campus, id: user.campus.id
     end
   end
