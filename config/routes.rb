@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   get 'dados_pessoais' => 'home#dados_pessoais', as: 'dados_pessoais'
   post 'dados_pessoais' => 'home#salvar_dados_pessoais'
 
-  get 'api/campi.:format' => 'api#campi'
-  get 'api/calendario/:id_campus.:format' => 'api#calendario'
+  get 'api/campi.:format' => 'api#campi', as: 'api_campi'
+  get 'api/calendario/:id_campus.:format' => 'api#calendario', as: 'api_calendario'
 end
