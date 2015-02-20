@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   # GET /usuarios
@@ -32,9 +34,11 @@ class UsuariosController < ApplicationController
     @usuario.senha = Digest::SHA1.hexdigest("#{@usuario.salt}--#{@usuario.senha}")
     @usuario.ativo = true
 
+    @usuario.senha_confirmation = @usuario.senha if senha_confirmada
+
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
+        format.html { redirect_to @usuario, notice: 'Usuário criado com sucesso.' }
         format.json { render :show, status: :created, location: @usuario }
       else
         format.html { render :new }

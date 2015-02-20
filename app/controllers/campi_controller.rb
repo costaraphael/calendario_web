@@ -1,5 +1,7 @@
 class CampiController < ApplicationController
-  before_action :set_campus, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
+  before_action :set_campus, only: [:edit, :update, :destroy]
 
   # GET /campi
   # GET /campi.json

@@ -1,11 +1,13 @@
 class EventosController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   before_action :set_calendario
 
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = @calendario.eventos.all.order(:inicio).order(:fim)
+    @eventos = @calendario.eventos.accessible_by(current_ability).order(:inicio).order(:fim)
   end
 
   # GET /eventos/1

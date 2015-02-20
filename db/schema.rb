@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218232446) do
+ActiveRecord::Schema.define(version: 20150220171352) do
 
   create_table "calendarios", force: :cascade do |t|
     t.integer  "campus_id",  limit: 4
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150218232446) do
     t.integer  "campus_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.boolean  "admin",      limit: 1
   end
 
   add_index "usuarios", ["campus_id"], name: "index_usuarios_on_campus_id", using: :btree

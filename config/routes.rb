@@ -12,12 +12,11 @@ Rails.application.routes.draw do
 
   resources :evento_tipos, only: :index
 
+  get '/login' => 'login#login'
+  post '/login' => 'login#logar'
+  get '/logout' => 'login#logout', as: 'logout'
+
   root 'home#index'
-
-  get '/login' => 'home#login'
-  post '/login' => 'home#logar'
-  get '/logout' => 'home#logout', as: 'logout'
-
   get 'dados_pessoais' => 'home#dados_pessoais', as: 'dados_pessoais'
   post 'dados_pessoais' => 'home#salvar_dados_pessoais'
 

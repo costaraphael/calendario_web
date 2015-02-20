@@ -5,23 +5,23 @@ class ApplicationController < ActionController::Base
 
   before_action :check_login
 
+  private
   def check_login
     json_request = request.format == 'json'
     unless json_request
       login = cookies[:login]
 
       if login
-        @active_user = Usuario.find(login)
-        redirect_to login_path unless @active_user.ativo? or request.original_url == login_url
+        @active_user = current_user
+        redirect_to login_path unless @active_user.ativo?
         cookies[:login] = {value: @active_user.id, expires: Time.now + 900}
       else
-        redirect_to login_path unless request.original_url == login_url
+        redirect_to login_path
       end
     end
   end
 
   def current_user
-    @active_user
+    @active_user ||= Usuario.find(cookies[:login])
   end
-
 end

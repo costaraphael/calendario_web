@@ -1,10 +1,12 @@
 class CalendariosController < ApplicationController
-  before_action :set_calendario, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
+  before_action :set_calendario, only: [:edit, :update, :destroy]
 
   # GET /calendarios
   # GET /calendarios.json
   def index
-    @calendarios = Calendario.all
+    @calendarios = Calendario.accessible_by(current_ability)
   end
 
   # GET /calendarios/1
