@@ -25,4 +25,4 @@ json.eventos do
 
 end
 
-json.removidas = @removidas
+json.removidas @removidas
