@@ -6,7 +6,7 @@ class Ability
       can :manage, :all
     else
       can :manage, Calendario, campus_id: user.campus.id
-      # can :manage, Evento, calendario: {campus_id: user.campus.id}
+      can :manage, Evento
       can :read, Campus, id: user.campus.id
     end
   end
