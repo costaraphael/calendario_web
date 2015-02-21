@@ -4,6 +4,8 @@ json.eventos do
 
   json.array!(@eventos) do |evento|
 
+    json.id evento.id
+
     json.descricao evento.descricao || ''
 
     json.dataini evento.inicio.strftime('%d-%m-%Y')
