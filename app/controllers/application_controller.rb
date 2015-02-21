@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   rescue_from CanCan::AccessDenied, with: :access_denied
   before_action :check_login
@@ -11,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     if login
       @active_user = current_user
-      redirect_to login_path unless @active_user.ativo?
+      redirect_to login_path unless @active_user.ativo
       cookies[:login] = {value: @active_user.id, expires: Time.now + 900}
     else
       redirect_to login_path
@@ -23,6 +21,10 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied(exception)
-    redirect_to :back, notice: 'Você não tem acesso para realizar esta ação.'
+    begin
+      redirect_to :back, notice: 'Você não tem acesso para realizar esta ação.'
+    rescue ActionController::RedirectBackError
+      redirect_to root_path, notice: 'Você não tem acesso para realizar esta ação.'
+    end
   end
 end

@@ -20,6 +20,7 @@
           <th>Login</th>
           <th>Campus</th>
           <th class="config">Ativo</th>
+          <th class="config">Admin</th>
           <th class="config">
             <i class="glyphicon glyphicon-cog"></i>
           </th>
@@ -32,14 +33,21 @@
               <td><%= usuario.nome %></td>
               <td><%= usuario.login %></td>
               <td><%= usuario.campus %></td>
-              <td>
-                <% if usuario.ativo? %>
-                    <i class="glyphicon glyphicon-unchecked"></i>
-                <% else %>
+              <td class="text-center">
+                <% if usuario.ativo %>
                     <i class="glyphicon glyphicon-check"></i>
+                <% else %>
+                    <i class="glyphicon glyphicon-unchecked"></i>
                 <% end %>
               </td>
-              <td>
+              <td class="text-center">
+                <% if usuario.admin %>
+                    <i class="glyphicon glyphicon-check"></i>
+                <% else %>
+                    <i class="glyphicon glyphicon-unchecked"></i>
+                <% end %>
+              </td>
+              <td class="text-nowrap">
                 <%= link_to edit_usuario_path(usuario), class: 'btn btn-primary btn-xs' do %>
                     <i class="glyphicon glyphicon-edit"></i>
                 <% end %>
@@ -51,5 +59,9 @@
         <% end %>
         </tbody>
       </table>
+  <% else %>
+  <div class="alert alert-info no-margin">
+    Nenhum usuário cadastrado.
+  </div>
   <% end %>
 </div>

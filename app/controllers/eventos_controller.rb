@@ -4,28 +4,20 @@ class EventosController < ApplicationController
   before_action :set_evento, only: [:show, :edit, :update, :destroy]
   before_action :set_calendario
 
-  # GET /eventos
-  # GET /eventos.json
   def index
     @eventos = @calendario.eventos.order(:inicio).order(:fim)
   end
 
-  # GET /eventos/1
-  # GET /eventos/1.json
   def show
   end
 
-  # GET /eventos/new
   def new
     @evento = @calendario.eventos.build
   end
 
-  # GET /eventos/1/edit
   def edit
   end
 
-  # POST /eventos
-  # POST /eventos.json
   def create
     @evento = @calendario.eventos.build(evento_params)
 
@@ -40,8 +32,6 @@ class EventosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /eventos/1
-  # PATCH/PUT /eventos/1.json
   def update
     respond_to do |format|
       if @evento.update(evento_params)
@@ -54,8 +44,6 @@ class EventosController < ApplicationController
     end
   end
 
-  # DELETE /eventos/1
-  # DELETE /eventos/1.json
   def destroy
     @evento.destroy
     respond_to do |format|
@@ -73,7 +61,6 @@ class EventosController < ApplicationController
     @calendario = Calendario.accessible_by(current_ability).find(params[:calendario_id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def evento_params
     params.require(:evento).permit(:evento_tipo_id, :inicio, :fim, :dia_semana, :descricao)
   end

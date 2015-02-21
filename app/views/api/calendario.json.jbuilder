@@ -1,8 +1,8 @@
-json.last_update @last_update
+json.last_update last_update
 
 json.eventos do
 
-  json.array!(@eventos) do |evento|
+  json.array!(eventos) do |evento|
 
     json.id evento.id
 
@@ -25,4 +25,4 @@ json.eventos do
 
 end
 
-json.removidas @removidas
+json.removidas removidas

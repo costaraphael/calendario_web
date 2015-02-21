@@ -12,10 +12,6 @@ class HomeController < ApplicationController
     params = dados_pessoais_params
     logger.info params[:senha]
 
-    if params[:nome].empty?
-      params.except! :nome
-    end
-
     if params[:senha].empty?
       params.except! :senha, :senha_confirmation
     else
@@ -26,19 +22,13 @@ class HomeController < ApplicationController
       params[:senha_confirmation] = params[:senha] if senha_confirmada
 
     end
-    
+
     respond_to do |format|
       @usuario = Usuario.find @active_user.id
       if @usuario.update(params)
-        format.html do
-          redirect_to root_path, notice: 'Dados pessoais atualizados com sucesso.'
-        end
-        format.json { render status: :created }
+        format.html { redirect_to root_path, notice: 'Dados pessoais atualizados com sucesso.' }
       else
-        format.html do
-        redirect_to dados_pessoais_path, notice: 'Erro ao atualizar os dados pessoais.'
-
-        end
+        format.html { render :dados_pessoais }
       end
     end
   end

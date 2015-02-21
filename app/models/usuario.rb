@@ -1,9 +1,9 @@
 class Usuario < ActiveRecord::Base
 
-  validates :senha, confirmation: {message: '^Os campos senha e confirmar senha devem ser iguais'}
+  validates :senha, confirmation: {message: 'Os campos senha e confirmar senha devem ser iguais'}
   validates :senha, presence: {message: 'não pode ser nulo'}
   validates :login, presence: {message: 'não pode ser nulo'}
-  validates :campus, presence: {message: 'não pode ser nulo'}
+  validates :campus, presence: {message: 'não pode ser nulo'}, unless: -> usuario { usuario.admin }
   validates :login, uniqueness: {message: 'informado já está sendo utilizado'}
   validates :nome, presence: {message: 'não pode ser nulo'}
 

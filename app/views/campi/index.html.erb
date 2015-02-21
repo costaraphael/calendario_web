@@ -30,7 +30,7 @@
                     <i class="glyphicon glyphicon-edit"></i>
                 <% end %>
 
-                <%= link_to campus, method: :delete, data: {confirm: "Deseja realmente excluir o campus #{campus.sigla}?"}, class: 'btn btn-xs btn-danger' do %>
+                <%= link_to campus, method: :delete, data: {confirm: "Deseja realmente excluir o câmpus #{campus.sigla}?"}, class: 'btn btn-xs btn-danger' do %>
                     <i class="glyphicon glyphicon-trash"></i>
                 <% end %>
               </td>
@@ -39,7 +39,7 @@
         </tbody>
       </table>
   <% else %>
-      <div class="alert alert-info">
+      <div class="alert alert-info no-margin">
         Nenhum câmpus cadastrado.
       </div>
   <% end %>

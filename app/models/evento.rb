@@ -32,6 +32,10 @@ class Evento < ActiveRecord::Base
     self.pluck('MAX(updated_at)').first.to_i
   end
 
+  def dia_semana_nome
+    self.class.dias_semana.to_h.invert[self.dia_semana]
+  end
+
   private
   def set_dia_fim
     self.fim = self.inicio unless self.evento_tipo.tem_periodo

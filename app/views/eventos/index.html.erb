@@ -18,8 +18,7 @@
         <thead>
         <tr>
           <th>Evento tipo</th>
-          <th>Inicio</th>
-          <th>Fim</th>
+          <th class="text-center">Data</th>
           <th class="config">
             <i class="glyphicon glyphicon-cog"></i>
           </th>
@@ -29,9 +28,12 @@
         <tbody>
         <% @eventos.each do |evento| %>
             <tr>
-              <td><%= evento.evento_tipo %></td>
-              <td><%= evento.inicio.strftime '%d/%m/%Y' %></td>
-              <td><%= evento.fim.strftime '%d/%m/%Y' %></td>
+              <td><%= evento.evento_tipo.to_s + (evento.evento_tipo.tem_dia_semana ? " (#{evento.dia_semana_nome})" : '') %></td>
+              <% if evento.inicio == evento.fim %>
+                  <td class="text-center"><%= evento.inicio.strftime '%d/%m/%Y' %></td>
+              <% else %>
+                  <td class="text-center"><%= evento.inicio.strftime '%d/%m/%Y' %> - <%= evento.fim.strftime '%d/%m/%Y' %></td>
+              <% end %>
               <td class="text-nowrap">
                 <%= link_to calendario_evento_path(@calendario, evento), class: 'btn btn-xs btn-success', data: {toggle: 'tooltip', placement: 'top'}, title: 'Visualizar' do %>
                     <i class="glyphicon glyphicon-list"></i>
@@ -49,7 +51,7 @@
       </table>
 
   <% else %>
-      <div class="alert alert-info">
+      <div class="alert alert-info no-margin">
         Nenhum evento cadastrado.
       </div>
   <% end %>

@@ -13,10 +13,10 @@
         <thead>
         <tr>
           <% if can? :manage, Campus %>
-              <th>Campus</th>
+              <th>Câmpus</th>
           <% end %>
           <th>Nome</th>
-          <th>Vigente</th>
+          <th>Vigente a partir de</th>
           <th class="config"></th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
                 <%= link_to edit_calendario_path(calendario), class: 'btn btn-xs btn-primary', data: {toggle: 'tooltip', placement: 'top'}, title: 'Editar' do %>
                     <i class="glyphicon glyphicon-edit"></i>
                 <% end %>
-                <%= link_to calendario, method: :delete, class: 'btn btn-xs btn-danger', data: {toggle: 'tooltip', placement: 'top', confirm: "Deseja realmente remover o calendario #{calendario.nome}?"}, title: 'Remover' do %>
+                <%= link_to calendario, method: :delete, class: 'btn btn-xs btn-danger', data: {toggle: 'tooltip', placement: 'top', confirm: "Deseja realmente remover o calendário #{calendario.nome}?"}, title: 'Remover' do %>
                     <i class="glyphicon glyphicon-trash"></i>
                 <% end %>
               </td>
@@ -45,7 +45,7 @@
         </tbody>
       </table>
   <% else %>
-      <div class="alert alert-info">
+      <div class="alert alert-info no-margin">
         Nenhum calendário cadastrado.
       </div>
   <% end %>

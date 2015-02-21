@@ -7,15 +7,16 @@
 
       <% if @usuario.new_record? %>
           <%= f.input :senha, as: :password %>
-          <%= f.input :senha_confirmation, as: :password %>
+          <%= f.input :senha_confirmation, as: :password, label: 'Confirmação de senha' %>
       <% end %>
       <% unless @usuario.new_record? %>
           <%= f.input :ativo %>
       <% end %>
-      <%= f.association :campus %>
+      <%= f.input :admin %>
+      <%= f.association :campus, prompt: 'Selecione um câmpus.', label: 'Câmpus' %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, 'Salvar', class: 'btn-primary' %>
     </div>
 <% end %>
