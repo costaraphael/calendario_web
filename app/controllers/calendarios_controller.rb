@@ -27,6 +27,8 @@ class CalendariosController < ApplicationController
   def create
     @calendario = Calendario.new(calendario_params)
 
+    @calendario.campus = current_user.campus if cannot? :manage, Campus
+
     respond_to do |format|
       if @calendario.save
         format.html { redirect_to calendarios_path, notice: "Calendário #{@calendario.nome} cadastrado com sucesso." }

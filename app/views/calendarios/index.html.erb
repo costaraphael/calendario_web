@@ -12,9 +12,11 @@
       <table class="table table-hover table-striped">
         <thead>
         <tr>
-          <th>Campus</th>
+          <% if can? :manage, Campus %>
+              <th>Campus</th>
+          <% end %>
           <th>Nome</th>
-          <th>Vigencia</th>
+          <th>Vigente</th>
           <th class="config"></th>
         </tr>
         </thead>
@@ -22,9 +24,11 @@
         <tbody>
         <% @calendarios.each do |calendario| %>
             <tr>
-              <td><%= calendario.campus %></td>
+              <% if can? :manage, Campus %>
+                  <td><%= calendario.campus %></td>
+              <% end %>
               <td><%= calendario.nome %></td>
-              <td><%= calendario.vigencia %></td>
+              <td><%= calendario.vigencia.strftime('%d/%m/%Y às %H:%M') %></td>
               <td class="text-nowrap">
                 <%= link_to calendario_eventos_path(calendario), class: 'btn btn-xs btn-success', data: {toggle: 'tooltip', placement: 'top'}, title: 'Eventos' do %>
                     <i class="glyphicon glyphicon-list"></i>
@@ -33,16 +37,16 @@
                     <i class="glyphicon glyphicon-edit"></i>
                 <% end %>
                 <%= link_to calendario, method: :delete, class: 'btn btn-xs btn-danger', data: {toggle: 'tooltip', placement: 'top', confirm: "Deseja realmente remover o calendario #{calendario.nome}?"}, title: 'Remover' do %>
-                <i class="glyphicon glyphicon-trash"></i>
+                    <i class="glyphicon glyphicon-trash"></i>
+                <% end %>
+              </td>
+            </tr>
         <% end %>
-        </td>
-        </tr>
-  <% end %>
-  </tbody>
-  </table>
+        </tbody>
+      </table>
   <% else %>
-  <div class="alert alert-info">
-    Nenhum calendário cadastrado.
-  </div>
+      <div class="alert alert-info">
+        Nenhum calendário cadastrado.
+      </div>
   <% end %>
 </div>

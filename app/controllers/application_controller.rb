@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied(exception)
-    p exception.action
+    redirect_to :back, notice: 'Você não tem acesso para realizar esta ação.'
   end
 end

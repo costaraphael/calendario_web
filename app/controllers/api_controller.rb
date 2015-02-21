@@ -8,7 +8,8 @@ class ApiController < ApplicationController
   end
 
   def calendario
-    @eventos = Evento.vigentes(params[:id_campus])
-    @last_update = @eventos.map {|e| e.updated_at.to_i} .max
+    @eventos = Evento.from(params[:from].to_i).vigentes(params[:id_campus])
+    @removidas = Evento.from(params[:from].to_i).only_deleted.map &:id
+    @last_update = Evento.from(params[:from].to_i).with_deleted.last_update
   end
 end

@@ -2,7 +2,7 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.association :campus %>
+      <%= f.association :campus if can? :manage, Campus %>
       <%= f.input :nome %>
       <%= f.input :vigencia %>
     </div>

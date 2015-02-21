@@ -7,7 +7,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = @calendario.eventos.accessible_by(current_ability).order(:inicio).order(:fim)
+    @eventos = @calendario.eventos.order(:inicio).order(:fim)
   end
 
   # GET /eventos/1
@@ -17,7 +17,7 @@ class EventosController < ApplicationController
 
   # GET /eventos/new
   def new
-    @evento = Evento.new
+    @evento = @calendario.eventos.build
   end
 
   # GET /eventos/1/edit
@@ -28,8 +28,6 @@ class EventosController < ApplicationController
   # POST /eventos.json
   def create
     @evento = @calendario.eventos.build(evento_params)
-
-    @evento.fim = @evento.inicio if @evento.fim.nil?
 
     respond_to do |format|
       if @evento.save
@@ -72,11 +70,11 @@ class EventosController < ApplicationController
   end
 
   def set_calendario
-    @calendario = Calendario.find(params[:calendario_id])
+    @calendario = Calendario.accessible_by(current_ability).find(params[:calendario_id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def evento_params
-      params.require(:evento).permit(:evento_tipo_id, :inicio, :fim, :dia_semana, :descricao)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def evento_params
+    params.require(:evento).permit(:evento_tipo_id, :inicio, :fim, :dia_semana, :descricao)
+  end
 end
