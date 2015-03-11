@@ -6,6 +6,8 @@ class Evento < ActiveRecord::Base
 
   validates_presence_of :evento_tipo, :calendario, :inicio, :fim
 
+  validates_presence_of :dia_semana, if: -> (evento) { evento.evento_tipo.nil? or evento.evento_tipo.tem_dia_semana }
+
   before_validation :set_dia_fim
 
   def self.dias_semana
