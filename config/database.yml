@@ -48,5 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: calendario_web_production
+  adapter: postgresql
+  host: ec2-54-83-205-164.compute-1.amazonaws.com
+  port: 5432
+  password: D3QrhJGFEGYp9Dup4607sd4imx
+  username: qylmtznejfapxs
+  database: dbl7rjn1pcg5gk
